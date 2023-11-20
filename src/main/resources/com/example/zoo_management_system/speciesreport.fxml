@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.GaussianBlur?>
+<?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.effect.Shadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.zoo_management_system.salesController">
+   <children>
+      <ImageView blendMode="SRC_ATOP" fitHeight="536.0" fitWidth="789.0" layoutX="-27.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
+         </image>
+         <effect>
+            <Lighting diffuseConstant="0.52" specularConstant="0.41" specularExponent="16.32" surfaceScale="1.61">
+               <bumpInput>
+                  <GaussianBlur radius="10.13" />
+               </bumpInput>
+               <light>
+                  <Light.Distant />
+               </light>
+            </Lighting>
+         </effect>
+      </ImageView>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="332.0" layoutX="145.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="315.0">
+         <effect>
+            <Shadow />
+         </effect>
+      </Rectangle>
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="364.0" layoutX="27.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
+      <Text fill="#087830" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DLSZOO" wrappingWidth="117.892578125">
+         <font>
+            <Font name="Calibri Bold" size="34.0" />
+         </font>
+      </Text>
+      <TableView layoutX="67.0" layoutY="126.0" prefHeight="270.0" prefWidth="471.0">
+        <columns>
+          <TableColumn prefWidth="126.0" text="Month" />
+          <TableColumn prefWidth="125.0" text="Enclosure" />
+            <TableColumn prefWidth="108.0" text="Tickets Sold" />
+            <TableColumn prefWidth="111.0" text="Total Sales" />
+        </columns>
+      </TableView>
+      <Text layoutX="74.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+      <Button fx:id="exit_btn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Back" />
+      <Label layoutX="67.0" layoutY="94.0" text="Monthly Sales Report:" />
+   </children>
+</AnchorPane>
