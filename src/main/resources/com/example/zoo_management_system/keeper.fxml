@@ -38,7 +38,7 @@
             <Shadow />
          </effect>
       </Rectangle>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="386.0" layoutX="27.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="364.0" layoutX="27.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
       <Text fill="#087830" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DLSZOO" wrappingWidth="117.892578125">
          <font>
             <Font name="Calibri Bold" size="34.0" />
@@ -62,5 +62,6 @@
       <ChoiceBox layoutX="385.0" layoutY="324.0" prefWidth="150.0" />
       <Text layoutX="310.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal ID:" />
       <Button layoutX="455.0" layoutY="371.0" mnemonicParsing="false" text="Mark as Fed" />
+      <Button fx:id="exit_btn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Exit" />
    </children>
 </AnchorPane>
