@@ -1,5 +1,7 @@
 package com.example.zoo_management_system;
 
+import java.sql.Date;
+
 public class Animal
 {
     private int anim_id;
@@ -7,15 +9,17 @@ public class Animal
     private String anim_type;
     private int age;
     private String diet;
+    private Date date;
     private int enc_id;
 
-    public Animal(int anim_id, String anim_name, String anim_type, int age, String diet, int enc_id)
+    public Animal(int anim_id, String anim_name, String anim_type, int age, String diet, Date date, int enc_id)
     {
         this.anim_id = anim_id;
         this.anim_name = anim_name;
         this.anim_type = anim_type;
         this.age = age;
         this.diet = diet;
+        this.date = date;
         this.enc_id = enc_id;
     }
 
@@ -57,6 +61,14 @@ public class Animal
 
     public void setDiet(String diet) {
         this.diet = diet;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
     }
 
     public int getEnc_id() {

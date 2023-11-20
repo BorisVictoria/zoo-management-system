@@ -13,6 +13,7 @@ CREATE TABLE IF NOT EXISTS enclosure (
 	enc_id			INT(4),
 	enc_type		VARCHAR(10) NOT NULL,
     enc_price       DECIMAL(5,2),
+    cleaned         DATE,
     PRIMARY KEY		(enc_id)
 );
 
@@ -22,10 +23,11 @@ CREATE TABLE IF NOT EXISTS enclosure (
 DROP TABLE IF EXISTS animal;
 CREATE TABLE IF NOT EXISTS animal (
 	anim_id			INT(4),
-    anim_name			VARCHAR(20),
-    anim_type			VARCHAR(30),
+    anim_name		VARCHAR(20),
+    anim_type		VARCHAR(30),
     age				INT(3),
     diet			VARCHAR(20),
+    fed             DATE,
     enc_id			INT(4),
     PRIMARY KEY		(anim_id),
     FOREIGN KEY		(enc_id)
@@ -70,17 +72,17 @@ CREATE TABLE IF NOT EXISTS employee (
 -- Add records to enclosure
 -- -----------------------------------------------------
 INSERT INTO enclosure
-	VALUES(1000, 'arctic', 100.00);
+	VALUES(1000, 'arctic', 100.00, '2022-07-14');
 
 INSERT INTO enclosure
-VALUES(1100, 'gay', 500.25);
-    
+    VALUES(1100, 'gay', 500.25, '2022-07-14');
+
 
 -- -----------------------------------------------------
 -- Add records to animal
 -- -----------------------------------------------------
 INSERT INTO animal
-	VALUES(1212, 'spencer',	'macaroni penguin', 8, 'krill', 1000);
+	VALUES(1212, 'spencer',	'macaroni penguin', 8, 'krill', '2022-07-14', 1000);
 
 INSERT INTO employee
     VALUES(1111, 'boris', '4000', '2003-07-04', '20', 'Programmer', 1000);

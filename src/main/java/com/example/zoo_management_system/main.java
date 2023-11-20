@@ -17,7 +17,7 @@ public class main extends Application {
         loader.setControllerFactory(controllerClass -> new mainController());
         Parent root = loader.load();
         Scene scene = new Scene(root, 600, 500);
-        stage.setTitle("Zoo Management System 1");
+        stage.setTitle("Zoo Management System");
         stage.setScene(scene);
         stage.setResizable(false);
         stage.show();

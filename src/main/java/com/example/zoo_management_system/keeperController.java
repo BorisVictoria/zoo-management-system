@@ -15,10 +15,8 @@ import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.net.URL;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.ResultSet;
-import java.sql.Statement;
+import java.sql.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
@@ -44,10 +42,13 @@ public class keeperController implements Initializable {
     private TableColumn<Animal, String> diet;
 
     @FXML
-    private TableColumn<Animal, Integer> last;
+    private TableColumn<Animal, Date> last;
 
     @FXML
     private ChoiceBox<String> anim;
+
+    @FXML
+    private ChoiceBox<String> enc;
 
     @FXML
     private Label lastCleaned;
@@ -66,18 +67,26 @@ public class keeperController implements Initializable {
     @FXML
     private TableView<Animal> table;
 
+    private int id;
+
     public void select() {
         ArrayList<Animal> animals = new ArrayList<>();
-        String enc_type = anim.getValue();
-        int id = 1000;
+        String enc_type = enc.getValue();
+
+        String cleaned = null;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery
                     ("SELECT * FROM enclosure WHERE enc_type = '" + enc_type + "'");
-            rs.next();
-            id = rs.getInt(1);
+            if (rs.next())
+            {
+                id = rs.getInt(1);
+                cleaned = String.valueOf(rs.getDate(4));
+                lastCleaned.setText(cleaned);
+            }
+
             con.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -89,7 +98,7 @@ public class keeperController implements Initializable {
             ResultSet rs = stmt.executeQuery
                     ("SELECT * FROM animal WHERE enc_id = " + id);
             while (rs.next()) {
-                animals.add(new Animal(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getInt(6)));
+                animals.add(new Animal(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getString(5), rs.getDate(6), rs.getInt(7)));
             }
 
             con.close();
@@ -105,7 +114,29 @@ public class keeperController implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Animal, String>("anim_type"));
         age.setCellValueFactory(new PropertyValueFactory<Animal, Integer>("age"));
         diet.setCellValueFactory(new PropertyValueFactory<Animal, String>("diet"));
-        last.setCellValueFactory(new PropertyValueFactory<Animal, Integer>("enc_id"));
+        last.setCellValueFactory(new PropertyValueFactory<Animal, Date>("date"));
+
+        ArrayList<String> enclosureAnimals = new ArrayList<>();
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery
+                    ("SELECT * FROM animal WHERE enc_id = " + id);
+            while (rs.next())
+                enclosureAnimals.add(rs.getString(2));
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        anim.getItems().clear();
+
+        for (int i = 0; i < enclosureAnimals.size(); i++)
+        {
+            anim.getItems().add(enclosureAnimals.get(i));
+        }
+        anim.getSelectionModel().selectFirst();
 
     }
     public void exit(ActionEvent event) throws IOException {
@@ -116,6 +147,58 @@ public class keeperController implements Initializable {
             scene = new Scene(root);
             stage.setScene(scene);
             stage.show();
+
+    }
+
+    public void clean(ActionEvent event) throws IOException {
+
+        Date now = Date.valueOf(LocalDate.now());
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate
+                    ("UPDATE enclosure SET cleaned = '" + now + "' WHERE enc_id = " + id);
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        select();
+
+    }
+
+    public void feed(ActionEvent event) throws IOException {
+
+        int anim_id = 0;
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery
+                    ("SELECT * FROM animal WHERE anim_name = '" + anim.getValue() + "'");
+            if (rs.next())
+            {
+                anim_id = rs.getInt(1);
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        Date now = Date.valueOf(LocalDate.now());
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
+            Statement stmt = con.createStatement();
+            stmt.executeUpdate
+                    ("UPDATE animal SET fed = '" + now + "' WHERE anim_id = " + anim_id);
+
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+
+        select();
 
     }
     @FXML
@@ -137,11 +220,9 @@ public class keeperController implements Initializable {
 
         for (int i = 0; i < enclosure.size(); i++)
         {
-            anim.getItems().add(enclosure.get(i));
+            enc.getItems().add(enclosure.get(i));
         }
-        anim.getSelectionModel().selectFirst();
-        select();
-
+        enc.getSelectionModel().selectFirst();
 
     }
 }

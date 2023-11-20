@@ -35,7 +35,7 @@
             <Font name="Calibri Bold" size="34.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="encid" layoutX="400.0" layoutY="36.0" prefHeight="25.0" prefWidth="173.0" />
+      <ChoiceBox fx:id="enc" layoutX="400.0" layoutY="36.0" onAction="#select" prefHeight="25.0" prefWidth="173.0" />
       <TableView fx:id="table" layoutX="67.0" layoutY="110.0" prefHeight="200.0" prefWidth="471.0">
         <columns>
           <TableColumn fx:id="anim_id" prefWidth="56.0" text="Anim ID" />
@@ -49,10 +49,10 @@
       <Text layoutX="74.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last cleaned:" />
       <Label fx:id="lastCleaned" layoutX="153.0" layoutY="328.0" prefHeight="17.0" prefWidth="94.0" text="Label" />
       <Text layoutX="74.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button fx:id="cleanbtn" layoutX="73.0" layoutY="371.0" mnemonicParsing="false" text="Mark as Clean" />
+      <Button fx:id="cleanbtn" layoutX="73.0" layoutY="371.0" mnemonicParsing="false" onAction="#clean" text="Mark as Clean" />
       <ChoiceBox fx:id="anim" layoutX="385.0" layoutY="324.0" prefWidth="150.0" />
-      <Text layoutX="310.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal ID:" />
-      <Button fx:id="feedbtn" layoutX="455.0" layoutY="371.0" mnemonicParsing="false" text="Mark as Fed" />
-      <Button fx:id="exitbtn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Exit" />
+      <Text layoutX="300.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal Name:" />
+      <Button fx:id="feedbtn" layoutX="455.0" layoutY="371.0" mnemonicParsing="false" onAction="#feed" text="Mark as Fed" />
+      <Button fx:id="exitbtn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="80.0" text="Exit" />
    </children>
 </AnchorPane>
