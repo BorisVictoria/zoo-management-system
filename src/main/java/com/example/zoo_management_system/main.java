@@ -22,23 +22,6 @@ public class main extends Application {
         stage.setResizable(false);
         stage.show();
 
-        try
-        {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/hoa_db","root","12345");
-
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery("SELECT * FROM regions");
-            while(rs.next())
-                System.out.println(rs.getString(1));
-            con.close();
-        }
-        catch(Exception e)
-        {
-            System.out.println(e);
-        }
-
-
-
     }
     public static void main(String[] args) {
         launch();

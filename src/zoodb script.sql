@@ -52,7 +52,7 @@ CREATE TABLE IF NOT EXISTS ticket (
 DROP TABLE IF EXISTS employee;
 CREATE TABLE IF NOT EXISTS employee (
 	emp_id			INT(4),
-    anim_name		VARCHAR(20),
+	emp_name        VARCHAR(20),
     salary			DECIMAL(10,2),
     dob				DATE,
     age				INT(3),
@@ -75,4 +75,9 @@ INSERT INTO enclosure
 -- -----------------------------------------------------
 INSERT INTO animal
 	VALUES(1212, 'spencer',	'macaroni penguin', 8, 'krill', 1000);
-    
+
+INSERT INTO employee
+    VALUES(1111, 'boris', '4000', '2003-07-04', '20', 'Programmer', 1000);
+
+INSERT INTO employee
+    VALUES(2222, 'chris', '4000', '2003-07-04', '20', 'Keeper', 1000);
