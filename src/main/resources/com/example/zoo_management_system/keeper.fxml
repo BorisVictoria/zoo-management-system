@@ -36,7 +36,7 @@
          </font>
       </Text>
       <ChoiceBox fx:id="encid" layoutX="400.0" layoutY="36.0" prefHeight="25.0" prefWidth="173.0" />
-      <TableView layoutX="67.0" layoutY="110.0" prefHeight="200.0" prefWidth="471.0">
+      <TableView fx:id="table" layoutX="67.0" layoutY="110.0" prefHeight="200.0" prefWidth="471.0">
         <columns>
           <TableColumn fx:id="anim_id" prefWidth="56.0" text="Anim ID" />
           <TableColumn fx:id="name" prefWidth="101.0" text="Name" />

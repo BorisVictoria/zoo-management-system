@@ -69,6 +69,9 @@ CREATE TABLE IF NOT EXISTS employee (
 -- -----------------------------------------------------
 INSERT INTO enclosure
 	VALUES(1000, 'arctic', 100.00);
+
+INSERT INTO enclosure
+VALUES(1100, 'gay', 500.25);
     
 
 -- -----------------------------------------------------
