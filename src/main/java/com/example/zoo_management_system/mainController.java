@@ -36,7 +36,7 @@ public class mainController {
     @FXML
     private Button btn1;
 
-    public void initScene(ActionEvent event) throws IOException
+    public void login(ActionEvent event) throws IOException
     {
         //ArrayList<Employee> employees = new ArrayList<>();
         //employees.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getDate(5),rs.getInt(6), rs.getString(7), rs.getInt(8)));
