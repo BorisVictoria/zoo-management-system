@@ -147,7 +147,7 @@ public class cashierController implements Initializable {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db","root","12345");
             Statement stmt = con.createStatement();
             stmt.executeUpdate
-                    ("INSERT INTO ticket(pass_type, price, p_date, enc_id) VALUES('" + enclosureType + "', '" + t_price + "', CURRENT_DATE , '" + t_enc_id + "')");
+                    ("INSERT INTO ticket(pass_type, price, p_date, enc_id) VALUES('" + ticketType + "', '" + t_price + "', CURRENT_DATE , '" + t_enc_id + "')");
 
 
             con.close();

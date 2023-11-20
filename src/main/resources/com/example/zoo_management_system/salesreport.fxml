@@ -1,24 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ChoiceBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.effect.GaussianBlur?>
-<?import javafx.scene.effect.Light.Distant?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.effect.Shadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.shape.Rectangle?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.zoo_management_system.keeperController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/17.0.2-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.zoo_management_system.salesController">
    <children>
-      <ImageView blendMode="SRC_ATOP" fitHeight="536.0" fitWidth="789.0" layoutX="-27.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fx:id="sales_table" blendMode="SRC_ATOP" fitHeight="536.0" fitWidth="789.0" layoutX="-27.0" layoutY="-10.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="https://images.unsplash.com/photo-1534567153574-2b12153a87f0?q=80&amp;w=2070&amp;auto=format&amp;fit=crop&amp;ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" />
          </image>
@@ -33,35 +24,23 @@
             </Lighting>
          </effect>
       </ImageView>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="332.0" layoutX="145.0" layoutY="94.0" stroke="BLACK" strokeType="INSIDE" width="315.0">
-         <effect>
-            <Shadow />
-         </effect>
-      </Rectangle>
-      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="364.0" layoutX="27.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
+      <Rectangle arcHeight="20.0" arcWidth="20.0" fill="WHITE" height="346.0" layoutX="27.0" layoutY="73.0" stroke="BLACK" strokeType="INSIDE" width="546.0" />
       <Text fill="#087830" layoutX="14.0" layoutY="40.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DLSZOO" wrappingWidth="117.892578125">
          <font>
             <Font name="Calibri Bold" size="34.0" />
          </font>
       </Text>
-      <ChoiceBox fx:id="encid" layoutX="400.0" layoutY="36.0" prefHeight="25.0" prefWidth="173.0" />
-      <TableView layoutX="67.0" layoutY="110.0" prefHeight="200.0" prefWidth="471.0">
+      <TableView fx:id="table" layoutX="67.0" layoutY="110.0" prefHeight="263.0" prefWidth="471.0">
         <columns>
-          <TableColumn prefWidth="56.0" text="Anim ID" />
-          <TableColumn prefWidth="101.0" text="Name" />
-            <TableColumn prefWidth="98.0" text="Type" />
-            <TableColumn prefWidth="43.0" text="Age" />
-            <TableColumn prefWidth="88.0" text="Diet" />
-            <TableColumn prefWidth="84.0" text="Last Fed" />
+          <TableColumn fx:id="month_year" prefWidth="79.0" text="Month-Year" />
+          <TableColumn fx:id="enc" prefWidth="90.0" text="Enclosure" />
+            <TableColumn fx:id="adults" prefWidth="61.0" text="Adults" />
+            <TableColumn fx:id="children" prefWidth="66.0" text="Children" />
+            <TableColumn fx:id="count" prefWidth="72.0" text="Total Count" />
+            <TableColumn fx:id="sales" prefWidth="110.0" text="Total Sales" />
         </columns>
       </TableView>
-      <Text layoutX="74.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Last cleaned:" />
-      <Label fx:id="lastcleaned" layoutX="153.0" layoutY="328.0" prefHeight="17.0" prefWidth="94.0" text="Label" />
       <Text layoutX="74.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button layoutX="73.0" layoutY="371.0" mnemonicParsing="false" text="Mark as Clean" />
-      <ChoiceBox layoutX="385.0" layoutY="324.0" prefWidth="150.0" />
-      <Text layoutX="310.0" layoutY="341.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Animal ID:" />
-      <Button layoutX="455.0" layoutY="371.0" mnemonicParsing="false" text="Mark as Fed" />
-      <Button fx:id="exit_btn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Exit" />
+      <Button fx:id="exit_btn" layoutX="493.0" layoutY="442.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Exit" />
    </children>
 </AnchorPane>

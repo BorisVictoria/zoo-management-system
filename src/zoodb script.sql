@@ -91,4 +91,7 @@ INSERT INTO employee
     VALUES(2222, 'chris', '4000', '2003-07-04', '20', 'Keeper', 1000);
 
 INSERT INTO employee
-    VALUES(3333, 'Claire', '4000', '2003-07-04', '20', 'Cashier', 1000)
+    VALUES(3333, 'Claire', '4000', '2003-07-04', '20', 'Cashier', 1000);
+
+INSERT INTO employee
+VALUES(6666, 'Miguel', '4000', '2003-07-04', '20', 'Manager', 1000);

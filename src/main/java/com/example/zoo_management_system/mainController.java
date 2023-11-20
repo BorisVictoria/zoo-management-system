@@ -97,7 +97,18 @@ public class mainController {
                 if (job.equals("Cashier"))
                 {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("cashier.fxml"));
-                    //loader.setControllerFactory(controllerClass -> new cashierController());
+                    loader.setControllerFactory(controllerClass -> new cashierController());
+                    root = loader.load();
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+
+                if (job.equals("Manager"))
+                {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("manager.fxml"));
+                    loader.setControllerFactory(controllerClass -> new managerController());
                     root = loader.load();
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);

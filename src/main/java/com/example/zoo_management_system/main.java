@@ -16,7 +16,7 @@ public class main extends Application {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
         loader.setControllerFactory(controllerClass -> new mainController());
         Parent root = loader.load();
-        Scene scene = new Scene(root, 600, 500);
+        Scene scene = new Scene(root);
         stage.setTitle("Zoo Management System");
         stage.setScene(scene);
         stage.setResizable(false);
