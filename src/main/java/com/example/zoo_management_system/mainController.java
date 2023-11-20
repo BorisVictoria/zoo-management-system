@@ -38,9 +38,8 @@ public class mainController {
 
     public void login(ActionEvent event) throws IOException
     {
-        //ArrayList<Employee> employees = new ArrayList<>();
-        //employees.add(new Employee(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getDouble(4), rs.getDate(5),rs.getInt(6), rs.getString(7), rs.getInt(8)));
-        String emp_name = "B";
+
+        String emp_name = "Boris";
         int emp_id = 0;
         boolean proceed = false;
 
@@ -97,7 +96,18 @@ public class mainController {
                 if (job.equals("Cashier"))
                 {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("cashier.fxml"));
-                    //loader.setControllerFactory(controllerClass -> new cashierController());
+                    loader.setControllerFactory(controllerClass -> new cashierController());
+                    root = loader.load();
+                    stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+                    scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.show();
+                }
+
+                if (job.equals("Vet"))
+                {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("vet.fxml"));
+                    loader.setControllerFactory(controllerClass -> new vetController());
                     root = loader.load();
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);

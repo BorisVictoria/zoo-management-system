@@ -28,6 +28,8 @@ CREATE TABLE IF NOT EXISTS animal (
     age				INT(3),
     diet			VARCHAR(20),
     fed             DATE,
+    vetted          DATE,
+    notes           VARCHAR(45),
     enc_id			INT(4),
     PRIMARY KEY		(anim_id),
     FOREIGN KEY		(enc_id)
@@ -82,7 +84,7 @@ INSERT INTO enclosure
 -- Add records to animal
 -- -----------------------------------------------------
 INSERT INTO animal
-	VALUES(1212, 'spencer',	'macaroni penguin', 8, 'krill', '2022-07-14', 1000);
+	VALUES(1212, 'spencer',	'macaroni penguin', 8, 'krill', '2022-07-14', '2022-07-14', 'dead', 1000);
 
 INSERT INTO employee
     VALUES(1111, 'boris', '4000', '2003-07-04', '20', 'Programmer', 1000);
@@ -91,4 +93,7 @@ INSERT INTO employee
     VALUES(2222, 'chris', '4000', '2003-07-04', '20', 'Keeper', 1000);
 
 INSERT INTO employee
-    VALUES(3333, 'Claire', '4000', '2003-07-04', '20', 'Cashier', 1000)
+    VALUES(3333, 'Claire', '4000', '2003-07-04', '20', 'Cashier', 1000);
+
+INSERT INTO employee
+    VALUES(4444, 'richard', '4000', '2003-07-04', '20', 'Vet', 1000);

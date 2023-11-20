@@ -9,17 +9,21 @@ public class Animal
     private String anim_type;
     private int age;
     private String diet;
-    private Date date;
+    private Date fed;
+    private Date vetted;
+    private String notes;
     private int enc_id;
 
-    public Animal(int anim_id, String anim_name, String anim_type, int age, String diet, Date date, int enc_id)
+    public Animal(int anim_id, String anim_name, String anim_type, int age, String diet, Date fed, Date vetted, String notes, int enc_id)
     {
         this.anim_id = anim_id;
         this.anim_name = anim_name;
         this.anim_type = anim_type;
         this.age = age;
         this.diet = diet;
-        this.date = date;
+        this.fed = fed;
+        this.vetted = vetted;
+        this.notes = notes;
         this.enc_id = enc_id;
     }
 
@@ -63,12 +67,28 @@ public class Animal
         this.diet = diet;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getFed() {
+        return fed;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setFed(Date fed) {
+        this.fed = fed;
+    }
+
+    public Date getVetted() {
+        return vetted;
+    }
+
+    public void setVetted(Date vetted) {
+        this.vetted = vetted;
+    }
+
+    public String getNotes() {
+        return notes;
+    }
+
+    public void setNotes(String notes) {
+        this.notes = notes;
     }
 
     public int getEnc_id() {

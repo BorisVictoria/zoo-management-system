@@ -19,8 +19,9 @@ import java.sql.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
+import javafx.scene.text.Text;
 
-public class keeperController implements Initializable {
+public class vetController implements Initializable {
 
     private Stage stage;
     private Scene scene;
@@ -51,13 +52,13 @@ public class keeperController implements Initializable {
     private ChoiceBox<String> enc;
 
     @FXML
-    private Label lastCleaned;
+    private Label prevnotes;
 
     @FXML
-    private Button cleanbtn;
+    private TextField newnotes;
 
     @FXML
-    private Button feedbtn;
+    private Button updatebtn;
 
     @FXML
     private Button exitbtn;
@@ -73,7 +74,7 @@ public class keeperController implements Initializable {
         ArrayList<Animal> animals = new ArrayList<>();
         String enc_type = enc.getValue();
 
-        String cleaned = null;
+        String previous = null;
 
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
@@ -83,8 +84,6 @@ public class keeperController implements Initializable {
             if (rs.next())
             {
                 id = rs.getInt(1);
-                cleaned = String.valueOf(rs.getDate(4));
-                lastCleaned.setText(cleaned);
             }
 
             con.close();
@@ -114,7 +113,7 @@ public class keeperController implements Initializable {
         type.setCellValueFactory(new PropertyValueFactory<Animal, String>("anim_type"));
         age.setCellValueFactory(new PropertyValueFactory<Animal, Integer>("age"));
         diet.setCellValueFactory(new PropertyValueFactory<Animal, String>("diet"));
-        last.setCellValueFactory(new PropertyValueFactory<Animal, Date>("fed"));
+        last.setCellValueFactory(new PropertyValueFactory<Animal, Date>("vetted"));
 
         ArrayList<String> enclosureAnimals = new ArrayList<>();
 
@@ -123,8 +122,17 @@ public class keeperController implements Initializable {
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery
                     ("SELECT * FROM animal WHERE enc_id = " + id);
+            int ctr = 0;
             while (rs.next())
+            {
                 enclosureAnimals.add(rs.getString(2));
+                if (ctr == 0)
+                {
+                    previous = String.valueOf(rs.getString(8));
+                    prevnotes.setText(previous);
+                    ctr++;
+                }
+            }
             con.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -138,6 +146,7 @@ public class keeperController implements Initializable {
         }
         anim.getSelectionModel().selectFirst();
 
+
     }
     public void exit(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
@@ -149,26 +158,7 @@ public class keeperController implements Initializable {
         stage.show();
 
     }
-
-    public void clean(ActionEvent event) throws IOException {
-
-        Date now = Date.valueOf(LocalDate.now());
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
-            Statement stmt = con.createStatement();
-            stmt.executeUpdate
-                    ("UPDATE enclosure SET cleaned = '" + now + "' WHERE enc_id = " + id);
-
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
-        select();
-
-    }
-
-    public void feed(ActionEvent event) throws IOException {
+    public void update(ActionEvent event) throws IOException {
 
         int anim_id = 0;
 
@@ -187,11 +177,14 @@ public class keeperController implements Initializable {
         }
 
         Date now = Date.valueOf(LocalDate.now());
+        String newnotesText = newnotes.getText();
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
             Statement stmt = con.createStatement();
             stmt.executeUpdate
-                    ("UPDATE animal SET fed = '" + now + "' WHERE anim_id = " + anim_id);
+                    ("UPDATE animal SET notes = '" + newnotesText + "' WHERE anim_id = " + anim_id);
+            stmt.executeUpdate
+                    ("UPDATE animal SET vetted = '" + now + "' WHERE anim_id = " + anim_id);
 
             con.close();
         } catch (Exception e) {
