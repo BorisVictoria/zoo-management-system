@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS animal (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS ticket;
 CREATE TABLE IF NOT EXISTS ticket (
-	tick_id			INT(4),
+	tick_id			INT(4) AUTO_INCREMENT,
     pass_type		VARCHAR(10),
     price			DECIMAL(5,2),
     p_date			DATE,
@@ -46,6 +46,8 @@ CREATE TABLE IF NOT EXISTS ticket (
     FOREIGN KEY		(enc_id)
 		REFERENCES	enclosure(enc_id)
 );
+
+ALTER TABLE ticket AUTO_INCREMENT=20000;
 
 -- -----------------------------------------------------
 -- Table employee
@@ -85,3 +87,6 @@ INSERT INTO employee
 
 INSERT INTO employee
     VALUES(2222, 'chris', '4000', '2003-07-04', '20', 'Keeper', 1000);
+
+INSERT INTO employee
+    VALUES(3333, 'Claire', '4000', '2003-07-04', '20', 'Cashier', 1000)
