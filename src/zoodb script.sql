@@ -12,7 +12,7 @@ DROP TABLE IF EXISTS enclosure;
 CREATE TABLE IF NOT EXISTS enclosure (
 	enc_id			INT(4),
 	enc_type		VARCHAR(10) NOT NULL,
-    enc_price       DECIMAL(4,2),
+    enc_price       DECIMAL(5,2),
     PRIMARY KEY		(enc_id)
 );
 
@@ -39,7 +39,7 @@ DROP TABLE IF EXISTS ticket;
 CREATE TABLE IF NOT EXISTS ticket (
 	tick_id			INT(4),
     pass_type		VARCHAR(10),
-    price			DECIMAL(4,2),
+    price			DECIMAL(5,2),
     p_date			DATE,
     enc_id			INT(4),
     PRIMARY KEY		(tick_id),
@@ -68,7 +68,7 @@ CREATE TABLE IF NOT EXISTS employee (
 -- Add records to enclosure
 -- -----------------------------------------------------
 INSERT INTO enclosure
-	VALUES(1000, 'arctic');
+	VALUES(1000, 'arctic', 100.00);
     
 
 -- -----------------------------------------------------
