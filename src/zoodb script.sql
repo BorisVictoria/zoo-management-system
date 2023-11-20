@@ -12,6 +12,7 @@ DROP TABLE IF EXISTS enclosure;
 CREATE TABLE IF NOT EXISTS enclosure (
 	enc_id			INT(4),
 	enc_type		VARCHAR(10) NOT NULL,
+    enc_price       DECIMAL(4,2),
     PRIMARY KEY		(enc_id)
 );
 
