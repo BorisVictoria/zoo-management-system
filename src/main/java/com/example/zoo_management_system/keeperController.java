@@ -45,7 +45,7 @@ public class keeperController implements Initializable {
     private TableColumn<Animal, Date> last;
 
     @FXML
-    private ChoiceBox<String> anim;
+    private TextField anim;
 
     @FXML
     private ChoiceBox<String> enc;
@@ -130,14 +130,6 @@ public class keeperController implements Initializable {
             System.out.println(e);
         }
 
-        anim.getItems().clear();
-
-        for (int i = 0; i < enclosureAnimals.size(); i++)
-        {
-            anim.getItems().add(enclosureAnimals.get(i));
-        }
-        anim.getSelectionModel().selectFirst();
-
     }
     public void exit(ActionEvent event) throws IOException {
         FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
@@ -170,28 +162,12 @@ public class keeperController implements Initializable {
 
     public void feed(ActionEvent event) throws IOException {
 
-        int anim_id = 0;
-
-        try {
-            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
-            Statement stmt = con.createStatement();
-            ResultSet rs = stmt.executeQuery
-                    ("SELECT * FROM animal WHERE anim_name = '" + anim.getValue() + "'");
-            if (rs.next())
-            {
-                anim_id = rs.getInt(1);
-            }
-            con.close();
-        } catch (Exception e) {
-            System.out.println(e);
-        }
-
         Date now = Date.valueOf(LocalDate.now());
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
             Statement stmt = con.createStatement();
             stmt.executeUpdate
-                    ("UPDATE animal SET fed = '" + now + "' WHERE anim_id = " + anim_id);
+                    ("UPDATE animal SET fed = '" + now + "' WHERE anim_id = " + Integer.parseInt(anim.getText()));
 
             con.close();
         } catch (Exception e) {
