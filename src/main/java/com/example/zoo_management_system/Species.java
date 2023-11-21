@@ -3,10 +3,28 @@ package com.example.zoo_management_system;
 public class Species
 {
     String species;
+    String enclosure;
     int count;
     int min;
     int ave;
     int max;
+
+    public Species(String enclosure, String species, int count, int min, int ave, int max) {
+        this.species = species;
+        this.enclosure = enclosure;
+        this.count = count;
+        this.min = min;
+        this.ave = ave;
+        this.max = max;
+    }
+
+    public String getEnclosure() {
+        return enclosure;
+    }
+
+    public void setEnclosure(String enclosure) {
+        this.enclosure = enclosure;
+    }
 
     public String getSpecies() {
         return species;

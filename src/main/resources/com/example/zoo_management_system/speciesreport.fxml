@@ -43,17 +43,18 @@
             <Font name="Calibri Bold" size="34.0" />
          </font>
       </Text>
-      <TableView layoutX="67.0" layoutY="126.0" prefHeight="270.0" prefWidth="471.0">
+      <TableView fx:id="table" layoutX="67.0" layoutY="126.0" prefHeight="270.0" prefWidth="471.0">
         <columns>
-          <TableColumn prefWidth="169.0" text="Species" />
-          <TableColumn prefWidth="72.0" text="Count" />
-            <TableColumn prefWidth="79.0" text="Min Age" />
-            <TableColumn prefWidth="78.0" text="Avg Age" />
-            <TableColumn prefWidth="72.0" text="Max Age" />
+            <TableColumn fx:id="enc" prefWidth="76.0" text="Enclosure" />
+          <TableColumn fx:id="species" prefWidth="107.0" text="Species" />
+          <TableColumn fx:id="count" minWidth="0.0" prefWidth="85.0" text="Count" />
+            <TableColumn fx:id="min" minWidth="0.0" prefWidth="64.0" text="Min Age" />
+            <TableColumn fx:id="max" prefWidth="64.0" text="Max Age" />
+            <TableColumn fx:id="ave" prefWidth="73.0" text="Ave Age" />
         </columns>
       </TableView>
       <Text layoutX="74.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" />
-      <Button fx:id="exit_btn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="80.0" text="Back" />
+      <Button fx:id="exit_btn" layoutX="495.0" layoutY="450.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="80.0" text="Back" />
       <Label layoutX="67.0" layoutY="94.0" text="Zoo Species Report:" />
    </children>
 </AnchorPane>

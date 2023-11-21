@@ -24,6 +24,9 @@ public class speciesController implements Initializable {
     private Stage stage;
     private Scene scene;
     private Parent root;
+
+    @FXML
+    private TableColumn<Species, String > enc;
     @FXML
     private TableColumn<Species, String > species;
     @FXML
@@ -45,8 +48,11 @@ public class speciesController implements Initializable {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery
-                    ("");
-
+                    ("SELECT e.enc_type, a.anim_type, COUNT(a.anim_type), MIN(a.age), AVG(a.age), MAX(a.age)\n" +
+                            "FROM animal a INNER JOIN enclosure e ON a.enc_id = e.enc_id\n" +
+                            "GROUP BY e.enc_type, a.anim_type;");
+            while(rs.next())
+                animals.add(new Species(rs.getString(1), rs.getString(2), rs.getInt(3), rs.getInt(4), rs.getInt(5), rs.getInt(6)));
             con.close();
         } catch (Exception e) {
             System.out.println(e);
@@ -55,6 +61,7 @@ public class speciesController implements Initializable {
         data = FXCollections.observableArrayList(animals);
         table.setItems(data);
 
+        enc.setCellValueFactory(new PropertyValueFactory<Species, String>("enclosure"));
         species.setCellValueFactory(new PropertyValueFactory<Species, String>("species"));
         count.setCellValueFactory(new PropertyValueFactory<Species, Integer>("count"));
         min.setCellValueFactory(new PropertyValueFactory<Species, Integer>("min"));
@@ -63,8 +70,8 @@ public class speciesController implements Initializable {
 
     }
     public void exit(ActionEvent event) throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
-        loader.setControllerFactory(controllerClass -> new mainController());
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("manager.fxml"));
+        loader.setControllerFactory(controllerClass -> new managerController());
         root = loader.load();
         stage = (Stage)((Node)event.getSource()).getScene().getWindow();
         scene = new Scene(root);
@@ -76,6 +83,6 @@ public class speciesController implements Initializable {
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle)
     {
-
+        select();
     }
 }

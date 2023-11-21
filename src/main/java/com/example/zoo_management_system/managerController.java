@@ -55,6 +55,17 @@ public class managerController {
 
     }
 
+    public void exit(ActionEvent event) throws IOException {
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("main.fxml"));
+        loader.setControllerFactory(controllerClass -> new mainController());
+        root = loader.load();
+        stage = (Stage)((Node)event.getSource()).getScene().getWindow();
+        scene = new Scene(root);
+        stage.setScene(scene);
+        stage.show();
+
+    }
+
 
 
 }
