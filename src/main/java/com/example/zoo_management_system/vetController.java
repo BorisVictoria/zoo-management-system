@@ -74,8 +74,6 @@ public class vetController implements Initializable {
         ArrayList<Animal> animals = new ArrayList<>();
         String enc_type = enc.getValue();
 
-        String previous = null;
-
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
             Statement stmt = con.createStatement();
@@ -115,23 +113,14 @@ public class vetController implements Initializable {
         diet.setCellValueFactory(new PropertyValueFactory<Animal, String>("diet"));
         last.setCellValueFactory(new PropertyValueFactory<Animal, Date>("vetted"));
 
-        ArrayList<String> enclosureAnimals = new ArrayList<>();
-
         try {
             Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
             Statement stmt = con.createStatement();
             ResultSet rs = stmt.executeQuery
-                    ("SELECT * FROM animal WHERE enc_id = " + id);
-            int ctr = 0;
+                    ("SELECT * FROM animal WHERE anim_id = " + Integer.parseInt(anim.getText()));
             while (rs.next())
             {
-                enclosureAnimals.add(rs.getString(2));
-                if (ctr == 0)
-                {
-                    previous = String.valueOf(rs.getString(8));
-                    prevnotes.setText(previous);
-                    ctr++;
-                }
+                prevnotes.setText(rs.getString(9));
             }
             con.close();
         } catch (Exception e) {
@@ -168,6 +157,23 @@ public class vetController implements Initializable {
 
         select();
 
+    }
+
+    public void search(ActionEvent event) throws IOException {
+
+        try {
+            Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/zoo_db", "root", "12345");
+            Statement stmt = con.createStatement();
+            ResultSet rs = stmt.executeQuery
+                    ("SELECT * FROM animal WHERE anim_id = " + Integer.parseInt(anim.getText()));
+            while (rs.next())
+            {
+                prevnotes.setText(rs.getString(9));
+            }
+            con.close();
+        } catch (Exception e) {
+            System.out.println(e);
+        }
     }
     @FXML
     public void initialize(URL url, ResourceBundle resourceBundle)

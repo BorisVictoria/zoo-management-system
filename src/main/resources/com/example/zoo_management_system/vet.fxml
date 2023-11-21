@@ -52,6 +52,6 @@
       <Button fx:id="exitbtn" layoutX="471.0" layoutY="394.0" mnemonicParsing="false" onAction="#exit" prefHeight="25.0" prefWidth="67.0" text="Exit" />
       <Label fx:id="prevnotes" layoutX="67.0" layoutY="398.0" text="Nothing to report" />
       <TextField fx:id="anim" layoutX="67.0" layoutY="332.0" prefHeight="25.0" prefWidth="129.0" promptText="Animal ID" />
-      <Button layoutX="208.0" layoutY="332.0" mnemonicParsing="false" text="Search" />
+      <Button layoutX="208.0" layoutY="332.0" mnemonicParsing="false" onAction="#search" text="Search" />
    </children>
 </AnchorPane>
