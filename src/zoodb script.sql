@@ -22,7 +22,7 @@ CREATE TABLE IF NOT EXISTS enclosure (
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS animal;
 CREATE TABLE IF NOT EXISTS animal (
-	anim_id			INT(4),
+	anim_id			INT(4) AUTO_INCREMENT,
     anim_name		VARCHAR(45),
     anim_type		VARCHAR(45),
     age				INT(3),
@@ -35,6 +35,7 @@ CREATE TABLE IF NOT EXISTS animal (
     FOREIGN KEY		(enc_id)
 		REFERENCES	enclosure(enc_id)
 );
+ALTER TABLE animal AUTO_INCREMENT=15000;
 
 -- -----------------------------------------------------
 -- Table ticket
@@ -58,7 +59,7 @@ ALTER TABLE ticket AUTO_INCREMENT=20000;
 -- -----------------------------------------------------
 DROP TABLE IF EXISTS employee;
 CREATE TABLE IF NOT EXISTS employee (
-	emp_id			INT(4),
+	emp_id			INT(4) AUTO_INCREMENT,
 	emp_name        VARCHAR(45),
     salary			DECIMAL(10,2),
     dob				DATE,
@@ -69,6 +70,7 @@ CREATE TABLE IF NOT EXISTS employee (
     FOREIGN KEY		(enc_id)
 		REFERENCES	enclosure(enc_id)
 );
+ALTER TABLE employee AUTO_INCREMENT=9000;
 
 INSERT INTO enclosure
 VALUES(1000, 'Aquatic', 200, '2023-11-12'),
@@ -112,7 +114,6 @@ VALUES(8001, 'boris_victoria', 72000.00, '1995-08-22', 28, 'Manager', NULL),
       (8026, 'andrea_cruz', 33100.00, '1990-04-12', 33, 'Keeper', 1009),
       (8027, 'enrique_ortega', 48200.00, '1988-07-22', 35, 'Vet', NULL),
       (8028, 'ana_soriano', 22000.00, '1994-01-09', 29, 'Cashier', NULL);
-
 
 INSERT INTO animal
 VALUES(2001, 'Zara', 'Leopard Shark', 3, 'Fish', '2023-11-12', '2023-11-12', 1000, 'Healthy'),
