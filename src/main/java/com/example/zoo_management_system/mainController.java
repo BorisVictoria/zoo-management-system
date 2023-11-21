@@ -52,7 +52,7 @@ public class mainController {
             Alert alert = new Alert(Alert.AlertType.INFORMATION);
             alert.setTitle("Information");
             alert.setHeaderText("Login Error");
-            alert.setContentText("Please try again bitch.");
+            alert.setContentText("Please try again.");
             alert.show();
         }
 
@@ -108,7 +108,6 @@ public class mainController {
                 {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("vet.fxml"));
                     loader.setControllerFactory(controllerClass -> new vetController());
-                    loader.setControllerFactory(controllerClass -> new cashierController());
                     root = loader.load();
                     stage = (Stage)((Node)event.getSource()).getScene().getWindow();
                     scene = new Scene(root);
@@ -133,7 +132,7 @@ public class mainController {
                 Alert alert = new Alert(Alert.AlertType.INFORMATION);
                 alert.setTitle("Information");
                 alert.setHeaderText("Incorrect Username or Password!");
-                alert.setContentText("Please try again bitch.");
+                alert.setContentText("Please try again.");
                 alert.show();
             }
         }

@@ -72,7 +72,7 @@ CREATE TABLE IF NOT EXISTS employee (
 
 INSERT INTO enclosure
 VALUES(1000, 'Aquatic', 200, '2023-11-12'),
-      (1001, 'Aquatic', 200, '2023-11-12'),
+      (1001, 'Freshwater', 200, '2023-11-12'),
       (1002, 'Antarctic', 150, '2023-11-12'),
       (1003, 'Aviary', 100, '2023-11-12'),
       (1004, 'Petting', 250, '2023-11-12'),
